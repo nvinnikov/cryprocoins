@@ -15,7 +15,8 @@ while True:
         continue
     if x == '--x':
         print(qq.get_20_coins())
-        print('Example:' + '\n' + 'BTC' + '\n' + "Bitcoin (BTC) is a cryptocurrency")
+        print('Example:' + '\n' + 'BTC' + '\n' + "Bitcoin (BTC) is a cryptocurrency" + '\n' +
+              "Bitcoin is 48,086.15609069 USD" + '\n' + "BTC is down -0.04 over the last 24 hours.")
     if x == '--a':
         print(all)
     if x in all:
