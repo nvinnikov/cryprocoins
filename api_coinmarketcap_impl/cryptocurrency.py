@@ -72,4 +72,4 @@ class Cryptocurrency(object):
         string = self.get_coin_description_by_symbol(symbol)
         f = string.find(' USD and is ') + 9
         l = string.find(' It is currently trading')
-        return(symbol + ' ' + string[f:l])
+        return symbol + ' ' + string[f:l]
