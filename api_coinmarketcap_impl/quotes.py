@@ -38,7 +38,7 @@ class Quotes(object):
         return str(self._quotes_info_latest()['active_market_pairs'])
 
 
-class MarketFell:
+class MarketFeel:
     def __init__(self):
         self.q = Quotes()
 

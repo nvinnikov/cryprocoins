@@ -1,7 +1,7 @@
-from quotes import MarketFell
+from quotes import MarketFeel
 from cryptocurrency import Cryptocurrency
 
-today = MarketFell()
+today = MarketFeel()
 print('Hello, today markets are ' + today.market_status() + ', so:' + '\n' + today.fells())
 print('Do you want to know something about crypto? Write coin symbol or help (--h).')
 
