@@ -6,6 +6,8 @@ from aiogram.utils.markdown import text, bold, italic, code, pre
 
 from aiogram.types import ParseMode, InputMediaPhoto, InputMediaVideo, ChatActions
 
+import keyboards as kb
+
 from config import TOKEN
 
 bot = Bot(token=TOKEN)
@@ -26,12 +28,37 @@ async def process_help_command(message: types.Message):
     await message.reply(msg, parse_mode=ParseMode.MARKDOWN)
 
 
+@dp.message_handler(commands=['example'])
+async def process_help_command(message: types.Message):
+    msg = text(('Example:\n'), bold('BTC'), '\nBitcoin (BTC) is a cryptocurrency\nBitcoin is 48,086.15609069 USD'
+                                            '\nBTC is down -0.04 over the last 24 hours.')
+    await message.reply(msg, parse_mode=ParseMode.MARKDOWN)
+
+
+@dp.message_handler(commands=['BTC'])
+async def btc_command(message: types.Message):
+    await message.reply("BTC", reply_markup=kb.markup_all)
+
+
+@dp.message_handler(commands=['ETH'])
+async def eth_command(message: types.Message):
+    await message.reply("ETH", reply_markup=kb.markup_all)
+
+
+@dp.message_handler(commands=['TON'])
+async def ton_command(message: types.Message):
+    await message.reply("TON", reply_markup=kb.markup_all)
+
+
+@dp.message_handler(commands=['I'])
+async def sol_command(message: types.Message):
+    await message.reply("You?", reply_markup=kb.markup_request)
+
+
 @dp.message_handler(content_types=ContentType.ANY)
-async def unknown_message(msg: types.Message):
-    message_text = text(('Я не знаю такой команды'),
-                        italic('\nПопробуй,'), 'использовать',
-                        code('команду'), '/help')
-    await msg.reply(message_text, parse_mode=ParseMode.MARKDOWN)
+async def unknown_message(message: types.Message):
+    msg = text(('Я не знаю такой команды\nПопробуй, использовать, команду'), code('/help'))
+    await message.reply(msg, parse_mode=ParseMode.MARKDOWN)
 
 
 @dp.message_handler()
