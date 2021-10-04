@@ -43,12 +43,12 @@ class MarketFeel:
         self.q = Quotes()
 
     def fells(self):
-        return ('BTC dominance today ' + self.q.btc_dominance_today() + '%, 24 hours change ' +
-                self.q.btc_dominance_24h_percentage_change() + '%' + '\n' +
-                'ETH dominance today ' + self.q.eth_dominance_today() + '%, 24 hours change ' +
-                self.q.eth_dominance_24h_percentage_change() + '%' + '\n' +
-                'Active ' + self.q.active_market_pairs() + ' pairs' + '\n' +
-                'Total cryptocoins ' + self.q.total_cryptocurrencies() + '\n')
+        return f'BTC dominance today {self.q.btc_dominance_today()}%,' \
+               f' 24 hours change {self.q.btc_dominance_24h_percentage_change()}%\n' \
+               f'ETH dominance today {self.q.eth_dominance_today()}%, ' \
+               f'24 hours change {self.q.eth_dominance_24h_percentage_change()}%\n' \
+               f'Active {self.q.active_market_pairs()} pairs\n' \
+               f'Total cryptocoins {self.q.total_cryptocurrencies()}\n '
 
     def market_status(self):
         if float(self.q.btc_dominance_24h_percentage_change()) >= 0:

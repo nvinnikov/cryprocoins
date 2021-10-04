@@ -34,7 +34,7 @@ class Cryptocurrency(object):
         return coins_map
 
     def _get_info_by_symbol(self, symbol):
-        logging.info('Get info about ' + symbol)
+        logging.info(f'Get info about {symbol}')
         _url = 'info?symbol='
         url = base_url + cryptocurrency_url + _url + symbol
         response = requests.get(url, headers=headers)
@@ -42,7 +42,7 @@ class Cryptocurrency(object):
         return mp['data']
 
     def _get_info_by_coin_id(self, coin_id):
-        logging.info('Get info by ' + coin_id)
+        logging.info(f'Get info by {coin_id}')
         _url = 'info?id='
         url = base_url + cryptocurrency_url + _url + str(coin_id)
         response = requests.get(url, headers=headers)
@@ -50,17 +50,17 @@ class Cryptocurrency(object):
         return mp['data']
 
     def get_symbol_id(self, symbol):
-        logging.info('Get ' + symbol + ' id')
+        logging.info(f'Get {symbol} id')
         mp = self._get_info_by_symbol(symbol)
         return mp[symbol]['id']
 
     def get_coin_description_by_symbol(self, symbol):
-        logging.info('Get ' + symbol + ' description')
+        logging.info(f'Get {symbol} description')
         mp = self._get_info_by_symbol(symbol)
         return mp[symbol]['description']
 
     def get_coin_description_by_id(self, coin_id):
-        logging.info('Get description by ' + coin_id)
+        logging.info(f'Get description by {coin_id}')
         mp = self._get_info_by_coin_id(coin_id)
         return mp[coin_id]['description']
 
@@ -74,15 +74,15 @@ class Cryptocurrency(object):
         return all
 
     def get_market_price(self, symbol):
-        logging.info('Get market price of ' + symbol)
+        logging.info(f'Get market price of {symbol}')
         string = self.get_coin_description_by_symbol(symbol)
         f = string.find('known price of') + 15 #151+15
         l = string.find('USD and is') + 3 #193+3
         return string[f:l]
 
     def get_market_statistic(self, symbol):
-        logging.info('Get market statistic of ' + symbol)
+        logging.info(f'Get market statistic of {symbol}')
         string = self.get_coin_description_by_symbol(symbol)
         f = string.find(' USD and is ') + 9
         l = string.find(' It is currently trading')
-        return symbol + ' ' + string[f:l]
+        return f'{symbol} {string[f:l]}'
